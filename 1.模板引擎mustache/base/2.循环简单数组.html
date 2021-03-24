@@ -1,0 +1,20 @@
+<html>
+  <head><script src="../mustache.js"></script></head>
+  <body>
+    
+  </body>
+  <script>
+    let templateStr = `
+      <ul>
+          {{#arr}}
+            <li>{{.}}</li>
+          {{/arr}}
+      </ul>
+    `
+    let data = {
+      arr: ['A','B','C']
+    }
+    let domStr = Mustache.render(templateStr,data)
+    console.log(domStr)
+  </script>
+</html>

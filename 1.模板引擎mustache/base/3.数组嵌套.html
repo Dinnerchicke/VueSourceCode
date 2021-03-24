@@ -1,0 +1,34 @@
+<html>
+  <head><script src="../mustache.js"></script></head>
+  <body>
+    
+  </body>
+  <script>
+    let templateStr = `
+      <ul>
+        {{#arr}}
+          <li>
+            <div class="hd">{{name}}的基本信息</div>
+            <div class="bd">
+              <p>姓名: {{name}}</p>
+              <p>性别: {{sex}}</p>
+              <ol>
+                {{#爱好}}
+                  <li>{{.}}</li>
+                {{/爱好}}
+              </ol>
+            </div>
+          </li>
+        {{/arr}}
+      </ul>
+    `
+    let data = {
+      arr: [
+        {"name":"xm","sex":"男","爱好":["女","妹子"]},
+        {"name":"xh","sex":"男","爱好":["男","汉子"]},
+      ]
+    }
+    let domStr = Mustache.render(templateStr,data)
+    console.log(domStr)
+  </script>
+</html>

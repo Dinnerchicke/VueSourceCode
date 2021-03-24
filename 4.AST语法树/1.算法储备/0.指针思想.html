@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 寻找字符串中连续次数最多的字符 -->
+  <script>
+    let str = 'aaaaaaaaaaaaaaaaabbbbbababababcccccccccccccccccccccc'
+
+    // 指针
+    let i = 0,
+    j = 1
+
+    // 当i还在范围内时继续寻找
+    while(i<=str.length-1){
+      if (str[i] !== str[j]) {
+        // i和j之间文字连续相同
+        console.log(i+'和'+j+'之间文字连续相同',str[i])
+        i = j
+      }
+      j++
+    }
+    console.log()
+  </script>
+</body>
+</html>

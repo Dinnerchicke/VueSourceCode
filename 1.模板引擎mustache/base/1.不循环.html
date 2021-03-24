@@ -1,0 +1,17 @@
+<html>
+  <head><script src="../mustache.js"></script></head>
+  <body>
+    
+  </body>
+  <script>
+    let templateStr = `
+      <h1>我买了一个{{thing}},好{{mood}}</h1>
+    `
+    let data = {
+      thing: '手机',
+      mood: 'happy'
+    }
+    let domStr = Mustache.render(templateStr,data)
+    console.log(domStr)
+  </script>
+</html>

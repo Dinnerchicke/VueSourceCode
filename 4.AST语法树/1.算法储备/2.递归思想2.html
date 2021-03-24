@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>递归</title>
+</head>
+<body>
+  <h1>高维数组变为嵌套对象</h1>
+  <script>
+    // 规则复现使用递归
+    // 形式转换
+    let arr = [1,2,[3,[4,5],6],7,[8],9]
+
+    // 写法一
+    function convert(arr) {
+      let result = []
+      for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i]==='number') {
+          result.push({
+            value: arr
+          })
+        } else if (Array.isArray(arr[i])) {
+          result.push({
+            children: convert(arr[i])
+          })
+        }
+      }
+      return result
+    }
+    console.log(convert(arr))
+
+    // 写法二
+    function convertMap(item) {
+      if (typeof item === 'number') {
+        return {
+          value: item
+        }
+      } else if (Array.isArray(item)){
+        return {
+          children: item.map(_item => convertMap(_item))
+        }
+      }
+    }
+    console.log(convertMap(arr))
+    
+  </script>
+</body>
+</html>

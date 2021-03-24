@@ -1,0 +1,17 @@
+{
+  "name": "dataresponse",
+  "version": "1.0.0",
+  "description": "> 数据变化，视图也跟着改变\r >\r > MVVM：model(数据模型)—view-model(视图模型)—view(视图)\r >\r > Object.defineProperty():数据劫持/数据代理，检测对象属性变化",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.24.4",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

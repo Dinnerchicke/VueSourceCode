@@ -1,0 +1,21 @@
+<html>
+  <head><script src="../mustache.js"></script></head>
+  <body>
+    <!-- 存储模板字符串 -->
+    <script type="text/template" id="myTemplate">
+      <ul>
+        {{#arr}}
+          <li>{{.}}</li>
+        {{/arr}}
+      </ul>
+    </script>
+  </body>
+  <script>
+    let templateStr = document.getElementById('myTemplate').innerHTML
+    let data = {
+      arr: ['A','B','C']
+    }
+    let domStr = Mustache.render(templateStr,data)
+    console.log(domStr)
+  </script>
+</html>

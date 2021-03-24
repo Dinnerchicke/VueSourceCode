@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>栈</title>
+</head>
+<body>
+  <p>栈：后进先出</p>
+  <p>方法：pop()/push()</p>
+  <script>
+    let str = '3[2[a]2[b]]'
+    function smartRepeat(templateStr) {
+      // 指针
+      let index = 0
+      // 栈1存放数字
+      let stackNum = []
+      // 栈2存放临时字符串
+      let stackStr = []
+      // 剩余部分
+      let rest = templateStr
+
+      while (index < templateStr.length -1) {
+        rest = templateStr.substring(index)
+        // 看当前剩余部分是否以数字开头
+        if (/^\d+\[/.test(rest)) {
+          // 捕获数字，()表示捕获
+          let times = Number(rest.match(/^(\d+)\[/)[1])
+          // 跳过数字和[
+          index+=times.toString().length+1
+          // 压栈
+          stackNum.push(times)
+          stackStr.push('')
+        }else if (/^\w\]/.test(rest)) { // 字母
+          // 把栈顶改为该字母
+          let word = rest.match(/^(\w+)\]/)[1]
+          stackStr[stackStr.length-1] = word
+          index+=word.length
+        } else if(rest[0]===']') {
+          // 如果是],将stackNum弹栈，把stackStr新栈顶元素重复拼接到刚刚弹出的那个字符串拼接到新栈顶上
+          let times = stackNum.pop()
+          let word = stackStr.pop()
+          // 重复times次
+          stackStr[stackStr.length-1]+=word.repeat(times)
+          index++
+        }
+      }
+      return stackStr[0].repeat(stackNum[0])
+    }
+    let result = smartRepeat(str)
+    console.log(result)
+  </script>
+</body>
+</html>
